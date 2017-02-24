@@ -1,0 +1,156 @@
+@keyframes stars-1 {
+  0% {transform: scale(1)}
+  50% {transform: scale(1.1)}
+  100% {transform: scale(1)}
+}
+
+@keyframes stars-2 {
+  0% {transform: scale(1)}
+  50% {transform: scale(1.1)}
+  100% {transform: scale(1)}
+}
+
+@keyframes stars-3 {
+  0% {transform: rotate(0deg)}
+  20% {transform: rotate(5deg)}
+  40% {transform: rotate(-5deg)}
+  60% {transform: rotate(5deg)}
+  80% {transform: rotate(-5deg)}
+  100% {transform: rotate(0deg)}
+}
+
+@keyframes bob {
+  0% {transform: translateY(-10%);}
+  50% {transform: translateY(10%);}
+  100% {transform: translateY(-10%);}
+}
+
+@keyframes title {
+  0% {transform: translateY(-20px);}
+  50% {transform: translateY(20px);}
+  100% {transform: translateY(-20px);}
+}
+
+@keyframes crab {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+@keyframes tire {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(-360deg);}
+}
+
+@keyframes turtle {
+  0% {transform: translateX(0px) translateY(-20px); opacity:0;}
+  2% {transform: translateX(0px) translateY(-20px); opacity:1;}
+  20% {transform: translateX(250px) translateY(20px);}
+  40% {transform: translateX(500px) translateY(-20px);}
+  60% {transform: translateX(750px) translateY(20px);}
+  80% {transform: translateX(1000px) translateY(-20px);}
+  98% {transform: translateX(1250px) translateY(20px); opacity: 1;}
+  100% {transform: translateX(1250px) translateY(20px); opacity: 0;}
+}
+
+@keyframes octopus {
+  0% {transform: translateX(0px) translateY(0px);}
+  25% {transform: translateX(100px) translateY(100px);}
+  50% {transform: translateX(0px) translateY(200px);}
+  75% {transform: translateX(-100px) translateY(100px);}
+  100% {transform: translateX(0px) translateY(0px);}
+}
+
+@keyframes lobster {
+  0% {transform: translateX(0px) translateY(0px);}
+  25% {transform: translateX(-100px) translateY(100px);}
+  50% {transform: translateX(0px) translateY(200px);}
+  75% {transform: translateX(100px) translateY(100px);}
+  100% {transform: translateX(0px) translateY(0px);}
+}
+
+@keyframes seahorse {
+  0% {transform: translateX(0px) translateY(0px);}
+  25% {transform: translateX(50px) translateY(50px);}
+  50% {transform: translateX(0px) translateY(100px);}
+  75% {transform: translateX(-50px) translateY(50px);}
+  100% {transform: translateX(0px) translateY(0px);}
+}
+
+@keyframes starfish {
+  0% {transform: translateX(0px) translateY(0px);}
+  25% {transform: translateX(-50px) translateY(50px);}
+  50% {transform: translateX(0px) translateY(100px);}
+  75% {transform: translateX(50px) translateY(50px);}
+  100% {transform: translateX(0px) translateY(0px);}
+}
+
+@keyframes swim-right {
+  0% {transform: translateX(0px) translateY(-20px); opacity:0;}
+  2% {transform: translateX(0px) translateY(-20px); opacity:1;}
+  20% {transform: translateX(250px) translateY(20px);}
+  40% {transform: translateX(500px) translateY(-20px);}
+  60% {transform: translateX(750px) translateY(20px);}
+  80% {transform: translateX(1000px) translateY(-20px);}
+  98% {transform: translateX(1250px) translateY(20px); opacity: 1;}
+  100% {transform: translateX(1250px) translateY(20px); opacity: 0;}
+}
+
+@keyframes swim-left-duplicate { // actually swims right
+  0% {transform: translateX(0px) translateY(-20px) scaleX(-0.7) scaleY(0.7); opacity:0;}
+  2% {transform: translateX(0px) translateY(-20px) scaleX(-0.7) scaleY(0.7); opacity:1;}
+  20% {transform: translateX(250px) translateY(20px) scaleX(-0.7) scaleY(0.7);}
+  40% {transform: translateX(500px) translateY(-20px) scaleX(-0.7) scaleY(0.7);}
+  60% {transform: translateX(750px) translateY(20px) scaleX(-0.7) scaleY(0.7);}
+  80% {transform: translateX(1000px) translateY(-20px) scaleX(-0.7) scaleY(0.7);}
+  98% {transform: translateX(1250px) translateY(20px) scaleX(-0.7) scaleY(0.7); opacity: 1;}
+  100% {transform: translateX(1250px) translateY(20px) scaleX(-0.7) scaleY(0.7); opacity: 0;}
+}
+
+@keyframes swim-left {
+  0% {transform: translateX(0px) translateY(-20px); opacity:0;}
+  2% {transform: translateX(0px) translateY(-20px); opacity:1;}
+  20% {transform: translateX(-250px) translateY(20px);}
+  40% {transform: translateX(-500px) translateY(-20px);}
+  60% {transform: translateX(-750px) translateY(20px);}
+  80% {transform: translateX(-1000px) translateY(-20px);}
+  98% {transform: translateX(-1250px) translateY(20px); opacity: 1;}
+  100% {transform: translateX(-1250px) translateY(20px); opacity: 0;}
+}
+
+@keyframes swim-right-duplicate { // actually swims left
+  0% {transform: translateX(0px) translateY(-20px) scaleX(-0.7) scaleY(0.7); opacity:0;}
+  2% {transform: translateX(0px) translateY(-20px) scaleX(-0.7) scaleY(0.7); opacity:1;}
+  20% {transform: translateX(-250px) translateY(20px) scaleX(-0.7) scaleY(0.7);}
+  40% {transform: translateX(-500px) translateY(-20px) scaleX(-0.7) scaleY(0.7);}
+  60% {transform: translateX(-750px) translateY(20px) scaleX(-0.7) scaleY(0.7);}
+  80% {transform: translateX(-1000px) translateY(-20px) scaleX(-0.7) scaleY(0.7);}
+  98% {transform: translateX(-1250px) translateY(20px) scaleX(-0.7) scaleY(0.7); opacity: 1;}
+  100% {transform: translateX(-1250px) translateY(20px) scaleX(-0.7) scaleY(0.7); opacity: 0;}
+}
+
+@keyframes swim-up {
+  0% {transform: translateY(0px); opacity:0;}
+  2% {transform: translateY(0px); opacity:1;}
+  98% {transform: translateY(-840px); opacity: 1;}
+  100% {transform: translateY(-840px); opacity: 0;}
+}
+
+@keyframes swim-up-duplicate {
+  0% {transform: translateY(0px) scale(0.7); opacity:0;}
+  2% {transform: translateY(0px) scale(0.7); opacity:1;}
+  98% {transform: translateY(-840px) scale(0.7); opacity: 1;}
+  100% {transform: translateY(-840px) scale(0.7); opacity: 0;}
+}
+
+@keyframes float {
+  0% {transform: translateY(0px);} 
+  20% {transform: translateY(175px);} 
+  25% {transform: translateY(200px);} 
+  30% {transform: translateY(175px);} 
+  50% {transform: translateY(0px);} 
+  70% {transform: translateY(-175px);} 
+  75% {transform: translateY(-200px);} 
+  80% {transform: translateY(-175px);} 
+  100% {transform: translateY(0px);} 
+}
+

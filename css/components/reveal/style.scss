@@ -1,0 +1,50 @@
+@import '../../variables';
+
+.reveal {
+  opacity: 0;
+  height: 400px;
+  width: 620px;
+  background-image: url($media-server-game + 'ImageAssets/frame.2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+
+  > div {
+    text-align: center;
+  }
+
+  .media-sequence {
+    display: none;
+  }
+
+  ul {
+    position: relative;
+    padding: 0;
+  }
+
+  li {
+    display: none;
+    list-style: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.OPEN {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 400px;
+  }
+
+  p {
+    line-height: 1.4;
+  }
+
+  &.OPEN {
+    z-index: 1;
+    opacity: 1;
+  }
+}

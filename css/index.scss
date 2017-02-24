@@ -1,0 +1,641 @@
+@import 'variables';
+@import 'mixins';
+
+@font-face {
+  font-family: 'KomikaAxis';
+  src: url('KOMIKAX_.eot'); /* IE9 Compat Modes */
+  src: url('KOMIKAX_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+     url('KOMIKAX_.woff') format('woff'), /* Modern Browsers */
+     url('KOMIKAX_.ttf')  format('truetype'), /* Safari, Android, iOS */
+     url('KOMIKAX_.svg#5cb969d55818caf596e9b0e1ab0f50d8') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, body > div, body > div > div {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+html {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+  color: $text-color;
+}
+
+body > div > div {
+  position: relative;
+  width: 960px;
+  height: 540px;
+  margin: auto;
+  font-size: 20px;
+  background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
+  background-size: cover;
+
+
+  .background {
+    opacity: 0;
+    transition: opacity .5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+
+    &.garbage {
+      background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
+    }
+  }
+
+  &.garbage > div > .background.garbage {
+    opacity: 1;
+  }
+}
+
+// preload assets
+#asset-bin {
+  display: none;
+}
+
+[pl-bg] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  color: transparent;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  background-image: url($media-server-game + 'SpritesAnimations/BU_1.png');
+  background-size: auto 300px;
+  background-position: left top;
+
+  &.close {
+    width: 36px;
+    height: 36px;
+    background-position: -508px -58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    z-index: 2;
+
+    &:hover {
+      background-position: -508px -208px;
+    }
+  }
+
+  &.next-screen,
+  &.prev-screen {
+    width: 50px;
+    height: 50px;
+  }
+
+  &.next-screen {
+    background-position: -350px -50px;
+    cursor: default;
+
+    &:hover {
+      background-position: -350px -200px;
+    }
+  }
+
+  &.prev-screen {
+    background-position: -200px -50px;
+
+    &:hover {
+      background-position: -200px -200px;
+    }
+  }
+
+  &.quit-yes {
+    width: 170px;
+    height: 90px;
+    background-size: auto 400px;
+    background-position: 387px 344px;
+
+    &:hover {
+      background-position: 387px 144px;
+    }
+  }
+
+  &.quit-no {
+    width: 170px;
+    height: 90px;
+    background-size: auto 400px;
+    background-position: 187px 344px;
+
+    &:hover {
+      background-position: 187px 144px;
+    }
+  }
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 36px;
+  margin: 0;
+}
+
+p {
+  font-size: 36px;
+  margin: 0;
+}
+
+.canvas-src { display: none; }
+
+.screen {
+  width: 960px;
+  height: 540px;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s, transform 0.5s;
+  transform: translateX(100%);
+}
+
+.screen.last {}
+
+.screen.OPEN {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.screen.READY {
+  display: block;
+}
+
+.screen.LEAVE {
+  opacity: 1;
+  transform: translateX(-100%);
+}
+
+.screen .next-screen,
+.screen .prev-screen {
+  position: absolute;
+  display: block;
+  bottom: 1%;
+  margin-bottom: 5px;
+  z-index: 2;
+}
+
+.screen .next-screen {
+  margin-right: 5px;
+  right: 0;
+  opacity: 0;
+  transform: rotate(-180deg);
+  transition: opacity 1s, transform 1s;
+}
+
+.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+.screen.GATED .next-screen {
+  opacity: 0;
+  cursor: default;
+}
+
+.skoash-game.MENU-quit .screen {
+  &:not(#quit) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.pl-game.DEMO .screen .next-screen,
+.screen.REPLAY .next-screen,
+.screen.COMPLETE .next-screen {
+  opacity: 1;
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+.screen .next-screen:hover {
+
+}
+
+.screen .prev-screen {
+  margin-left: 5px;
+  left: 0;
+
+}
+
+.screen .prev-screen:hover {
+
+}
+
+.screen {
+  &.no-frame {
+    color: #fff;
+
+    .frame {
+      text-align: center;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+// the following css is specific to this game
+
+.frame {
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+  line-height: 1.2;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 40px;
+  width: 720px;
+  height: 480px;
+  background-image: url($media-server-game + 'ImageAssets/frame.1.png');
+}
+
+.screen.large-frame {
+  .frame {
+    padding: 60px 75px;
+    margin: 40px auto;
+    width: 860px;
+    height: 460px;
+    text-align: center;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    p:only-child {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+
+    .title {
+      max-height: 100px;
+      margin-top: -30px;
+    }
+  }
+
+  &.OPEN {
+    .frame {
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+    }
+  }
+}
+
+#title {
+  .group {
+    width: 960px;
+    height: 540px;
+  }
+
+  .fish {
+    position: absolute;
+    height: 540px;
+    left: 40px;
+    top: 0;
+  }
+
+  .title {
+    position: absolute;
+    width: 680px;
+    left: 280px;
+    top: -50px;
+  }
+
+  .prev-screen {
+    display: none;
+  }
+
+  .next-screen {
+    background-position: 0px -30px;
+    width: 150px;
+    height: 90px;
+    right: 80px;
+
+    &:hover {
+      background-position: 0px -180px;
+    }
+  }
+
+  &.OPEN {
+    .fish {
+      animation-name: fadeInRight;
+      animation-delay: 1s;
+    }
+
+    .title {
+      animation: title 6s infinite;
+    }
+  }
+}
+
+#you-feel {
+
+  > div {
+    text-align: center;
+  }
+
+  .frame > img {
+    width: 100%;
+  }
+
+  .frame > div {
+    position: absolute;
+    left: 50%;
+    bottom: 61px;
+    transform: translateX(-50%);
+  }
+
+  .selectable {
+    margin: -10px;
+    height: 270px;
+    justify-content: center;
+  }
+
+  li {
+    width: 300px;
+    margin: 0 -50px;
+    background-size: auto;
+    background-position-y: 64px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &.img-0 {
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -755px;
+    }
+
+    &.img-1 {
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -27px;
+    }
+
+    &.img-2 {
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: center;
+    }
+
+    &.SELECTED,
+    &:hover {
+        background-position-y: -188px;
+    }
+
+    &.SELECTED {
+      animation-name: pulse;
+      animation-iteration-count: 2;
+    }
+  }
+}
+
+.VOICE-OVER #you-feel ul {
+  cursor: auto;
+  pointer-events: none;
+}
+
+
+#water-pollution {
+
+  img {
+    vertical-align: middle;
+    margin: 0 -20px;
+  }
+
+  .words {
+    width: 360px;
+  }
+
+  .fish {
+    width: 330px;
+    animation-name: title;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  .bubbles {
+    div {
+
+      -webkit-box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
+      -moz-box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
+      box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
+
+      background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,140,0), rgba(75,190,140,.1), rgba(75,190,140,.3), rgba(255,255,255,.7));
+      background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(75,190,140,.2)), to(rgba(255,255,255,.7)));
+      background:gradient(center 45deg, circle closest-corner, rgba(75,190,140,0), rgba(75,190,140,.1), rgba(75,190,140,.3), rgba(255,255,255,.7));
+      background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,207,0.1) 51%, rgba(9,133,207,0.3) 71%, rgba(9,133,207,.7) 100%);
+    }
+  }
+}
+
+#healthy-water {
+  .words {
+    width: 620px;
+    margin: 10px 0 0;
+  }
+
+  .selectable {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  li {
+    list-style: none;
+    width: 250px;
+    height: 250px;
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
+    background-position-y: top;
+    background-size: 500px;
+
+    &:nth-child(1) {
+        background-position-x: left;
+    }
+
+    &:nth-child(2) {
+        background-position-x: right;
+    }
+
+    &:hover,
+    &.SELECTED {
+      background-position-y: bottom;
+      cursor: pointer;
+    }
+
+    &.SELECTED {
+      animation-name: pulse;
+      animation-iteration-count: 2;
+    }
+  }
+}
+
+.VOICE-OVER #healthy-water ul {
+  cursor: auto;
+  pointer-events: none;
+}
+
+
+#clean-water {
+  p {
+    width: 360px;
+    margin-top: 100px;
+    font-weight: bold;
+  }
+
+  img {
+    position: absolute;
+    right: 35px;
+    bottom: 43px;
+    height: 360px;
+  }
+}
+
+#bubble-up {
+  .center div {
+    text-align: center;
+  }
+
+  img {
+    width: 640px;
+    margin-top: -60px;
+  }
+
+  p {
+    margin-top: -30px;
+  }
+}
+
+#pollutes-water {
+  .stars {
+    margin: 0 auto;
+    width: 380px;
+    height: 200px;
+    background-size: auto 200px;
+    background-repeat: no-repeat;
+    background-position: -727px center;
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
+  }
+
+  img {
+    width: 600px;
+    margin: -30px 0;
+  }
+
+  &.OPEN {
+    .stars-container {
+      background-position: 0px center;
+
+      @for $i from 1 through 3 {
+        &.star-#{$i} {
+          animation: stars-#{$i} .4s forwards;
+          .stars {
+            background-position: (-363.5 * ($i - 1))+px center;
+          }
+        }
+      }
+    }
+  }
+}
+
+#flip {
+
+  .fish {
+    max-height: 400px;
+    margin-top: -30px;
+  }
+
+  .flip {
+    width: 280px;
+    margin-top: -30px;
+  }
+
+  .frame > div {
+      display: inline-block;
+      width: 380px;
+      margin-left: -80px;
+  }
+
+  .flip-container {
+    opacity: 0;
+    transition: opacity .5s;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+  &.OPEN {
+    .fish {
+      animation-name: title;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    .flip {
+      animation: bob 4s infinite;
+    }
+  }
+}
+
+#quit {
+
+  .frame {
+    width: 720px;
+    height: 440px;
+    text-align: center;
+    padding: 70px 80px;
+
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 40px;
+    }
+
+    h3 {
+      margin: 20px 0 10px;
+      font-size: 30px;
+    }
+
+    button {
+      margin: 20px 10px;
+    }
+  }
+}
