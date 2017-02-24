@@ -1,46 +1,47 @@
 .selectable {
-  display: flex;
-  padding: 0;
-  height: 250px;
-  list-style: none;
+    display: flex;
+    padding: 0;
+    height: 250px;
+    list-style: none;
 
-  li {
-    position: relative;
-    width: 200px;
-  }
+    li {
+        position: relative;
+        width: 200px;
+    }
 
-  li img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s, transform 0.5s cubic-bezier(0, 0.18, 0, 1.01);
-  }
+    li img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s, transform .5s cubic-bezier(0, .18, 0, 1.01);
+        opacity: 0;
+        width: 100%;
+    }
 
-  li img.checked:hover,
-  li img.unchecked:hover {
-    transform: translateY(-40px);
-  }
+    li img.checked:hover,
+    li img.unchecked:hover {
+        transform: translateY(-40px);
+    }
 
-  li img.checked {
-    opacity: 1;
-  }
+    li img.checked {
+        opacity: 1;
+    }
 
-  li.HIGHLIGHTED img.checked {
-    opacity: 0;
-    z-index: -1;
-    transform: translateY(0);
-  }
+    li.HIGHLIGHTED img.checked {
+        transform: translateY(0);
+        opacity: 0;
+        z-index: -1;
+    }
 
-  li.HIGHLIGHTED img.unchecked {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    li.HIGHLIGHTED img.unchecked {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .selectable.VOICE-OVER li img,
 .VOICE-OVER .selectable li img {
-  /* disables the :hover rules when a VO is playing. */
-  pointer-events: none;
+    /* disables the :hover rules when a VO is playing. */
+    pointer-events: none;
 }
 

@@ -1,213 +1,213 @@
 @import 'variables';
 
 #trash {
-  opacity: 0;
-  cursor: none;
+    opacity: 0;
+    cursor: none;
 
-  .cursor {
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: opacity .5s;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 1;
-    height: 152px;
-    width: 250px;
-    background-size: 100%;
-    background-position: -740px 0;
-    background-image: url($media-server-game + 'ImageAssets/img_9.3.png');
-  }
-
-  .selectable,
-  .timer {
-    opacity: 1;
-    transition: opacity .5s;
-  }
-
-  .selectable {
-
-    position: relative;
-    width: 960px;
-    height: 540px;
-    margin: 0;
-    display: block;
-    transition: opacity 0.5s;
-
-    $pollutants: tire floss shoes water soda bottle1 chips necklace bottle2 bottle3 beaker oil    fries bottle4 sauce lightbulb lotion;
-    $p-bg-size:  3700 2200  3350  2200  2300 2300    2240  2200     2200    2200    2200   2600   2200  2200    2200  2200      2200;
-    $p-width:    72   52    145   71    38   39      77    74       41      59      43     73     65    37      38    35        59;
-    $p-height:   84   58    89    84    94   81      83    71       87      87      66     89     75    83      71    50        61;
-    $p-top:      400  50    112   219   219  219     212   446      219     219     124    211    126   219     219   88        25;
-    $p-left:     294  200   460   64    844  396     344   616      538     681     749    794    667   272     595   870       830;
-    $p-bg-x:     0    -129  -394  -389  -541 -676    -791  -905     -1035   -1166   -1294  -1683  -1556 -1680   -1812 -1941     -2071;
-    $p-h-y:      -218 -128  -197  -129  -135 -135    -132  -130     -129    -129    -129   -151   -129  -130    -130  -131      -129;
-
-    $nonpollutants: coral crab octopus shell1 fish1 seahorse turtle fish2 fish3 jellyfish fish4 lobster shell2 fish5 starfish;
-    $n-bg-size:     2400  2400 2400    2220  2200   2200     2100   2100  2000  2300      2300  2200    2300   1800  2200;
-    $n-width:       55    63   130     37    73     28       116    85    65    47        95    96      51     56    76;
-    $n-height:      68    62   122     37    55     52       74     59    49    119       49    54      49     35    73;
-    $n-top:         40    238  40      228   320    340      170    40    360   640       370   30      160    430   310;
-    $n-left:        88    114  300     50    1160   240      -200   1160  -200  890       1160  680     30     -200  790;
-    $n-bg-x:        0     -160 -335    -441  -588   -734     -848   -981  -1068 -1380     -1534 -1614   -1840  -1560 -2053;
-    $n-h-y:         -138  -137 -138    -125  -127   -125     -120   -120  -116  -132      -131  -125    -132   -102  -125;
-
-    $duplicates: fish1 fish3 jellyfish fish5;
-    $d-top:      134   470   640       50;
-    $d-left:     -200  1160  480       1160;
-
-    $animation-items: bottle1 bottle2 bottle3 bottle4 soda   sauce  water  tire crab   fish1     turtle fish2     fish3      jellyfish fish4     fish5      seahorse lobster octopus starfish;
-    $a-name:          float   float   float   float   float  float  float  tire crab   swim-left turtle swim-left swim-right swim-up   swim-left swim-right seahorse lobster octopus starfish;
-    $a-duration:      15      8       12      18      10     23     17     25   5      8         8      5         6          6         6         5          3        6       8       9;
-
-    li {
-      position: absolute;
-      background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
-      background-repeat: no-repeat;
-      animation: bob 8s infinite;
-      transition: opacity .5s;
-
-      @for $i from 1 through 15 {
-        &[data-ref=#{nth($nonpollutants, $i)}] {
-          background-image: url($media-server-game + 'SpritesAnimations/sprite.nonpollutant.png');
-          background-size: #{nth($n-bg-size, $i)+px};
-          width: #{nth($n-width, $i)+px};
-          height: #{nth($n-height, $i)+px};
-          top: #{nth($n-top, $i)+px};
-          left: #{nth($n-left, $i)+px};
-          background-position: #{nth($n-bg-x, $i)+px} 0px;
-
-          &:hover {
-            background-position: #{nth($n-bg-x, $i)+px} #{nth($n-h-y, $i)+px};
-          }
-        }
-      }
-
-      @for $i from 1 through 17 {
-        &[data-ref=#{nth($pollutants, $i)}] {
-          background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
-          background-size: #{nth($p-bg-size, $i)+px};
-          width: #{nth($p-width, $i)+px};
-          height: #{nth($p-height, $i)+px};
-          top: #{nth($p-top, $i)+px};
-          left: #{nth($p-left, $i)+px};
-          background-position: #{nth($p-bg-x, $i)+px} 0px;
-
-          &:hover {
-            background-position: #{nth($p-bg-x, $i)+px} #{nth($p-h-y, $i)+px};
-          }
-
-          &.HIGHLIGHTED {
-            opacity: 0;
-            pointer-events: none;
-          }
-        }
-      }
-
-      @for $i from 1 through 4 {
-        &[data-ref=#{nth($duplicates, $i)}].duplicate {
-          transform: scale(0.7);
-          top: #{nth($d-top, $i)+px};
-          left: #{nth($d-left, $i)+px};
-        }
-      }
-
-      @for $i from 1 through 20 {
-        &[data-ref=#{nth($animation-items, $i)}]{
-          animation: #{nth($a-name, $i)} #{nth($a-duration, $i)+s} linear infinite;
-
-          &.duplicate {
-            animation: #{nth($a-name, $i)+-duplicate} #{nth($a-duration, $i)-1+s} linear infinite;
-          }
-        }
-      }
-
-    }
-  }
-
-  .timer {
-    position: absolute;
-    left: 50px;
-    bottom: -10px;
-    color: #fff;
-
-    img {
-      width: 180px;
-      margin: 0;
-      vertical-align: middle;
-    }
-
-    span {
-      display: inline-block;
-      vertical-align: bottom;
-      padding-bottom: 18px;
-      margin-left: -15px;
-      font-size: 36px;
-    }
-  }
-
-  .group > .center.OPEN {
-    z-index: 1;
-  }
-
-  .reveal {
-
-    &.open-1 button {
-      display: none;
-    }
-
-    button {
-      width: 146px;
-      height: 146px;
-      margin-top: -20px;
-      margin-bottom: 30px;
-      background-size: 100%;
-      background-position: left top;
-      background-image: url($media-server-game + 'ImageAssets/IMG_10.3.png');
-      background-repeat: no-repeat;
-
-      &:hover {
-        background-position: left bottom;
-      }
-    }
-  }
-
-  &.REVEAL-OPEN {
-    .group > .center {
+    .cursor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 1;
         z-index: 1;
+        background-image: url($media-server-game + 'ImageAssets/img_9.3.png');
+        background-position: -740px 0;
+        background-size: 100%;
+        width: 250px;
+        height: 152px;
+        pointer-events: none;
     }
 
     .selectable,
     .timer {
-      opacity: 0;
+        transition: opacity .5s;
+        opacity: 1;
     }
-  }
 
-  &.TOUCH,
-  &.REVEAL-OPEN {
-    cursor: auto;
+    .selectable {
+        display: block;
+        position: relative;
+        transition: opacity .5s;
+        margin: 0;
+        width: 960px;
+        height: 540px;
 
-    .cursor {
-      opacity: 0;
+        $pollutants: tire floss shoes water soda bottle1 chips necklace bottle2 bottle3 beaker oil    fries bottle4 sauce lightbulb lotion;
+        $p-bg-size:  3700 2200  3350  2200  2300 2300    2240  2200     2200    2200    2200   2600   2200  2200    2200  2200      2200;
+        $p-width:    72   52    145   71    38   39      77    74       41      59      43     73     65    37      38    35        59;
+        $p-height:   84   58    89    84    94   81      83    71       87      87      66     89     75    83      71    50        61;
+        $p-top:      400  50    112   219   219  219     212   446      219     219     124    211    126   219     219   88        25;
+        $p-left:     294  200   460   64    844  396     344   616      538     681     749    794    667   272     595   870       830;
+        $p-bg-x:     0    -129  -394  -389  -541 -676    -791  -905     -1035   -1166   -1294  -1683  -1556 -1680   -1812 -1941     -2071;
+        $p-h-y:      -218 -128  -197  -129  -135 -135    -132  -130     -129    -129    -129   -151   -129  -130    -130  -131      -129;
+
+        // scss-lint:disable ColorKeyword ColorVariable
+        $nonpollutants: coral crab octopus shell1 fish1 seahorse turtle fish2 fish3 jellyfish fish4 lobster shell2 fish5 starfish;
+        // scss-lint:enable ColorKeyword ColorVariable
+        $n-bg-size:     2400  2400 2400    2220  2200   2200     2100   2100  2000  2300      2300  2200    2300   1800  2200;
+        $n-width:       55    63   130     37    73     28       116    85    65    47        95    96      51     56    76;
+        $n-height:      68    62   122     37    55     52       74     59    49    119       49    54      49     35    73;
+        $n-top:         40    238  40      228   320    340      170    40    360   640       370   30      160    430   310;
+        $n-left:        88    114  300     50    1160   240      -200   1160  -200  890       1160  680     30     -200  790;
+        $n-bg-x:        0     -160 -335    -441  -588   -734     -848   -981  -1068 -1380     -1534 -1614   -1840  -1560 -2053;
+        $n-h-y:         -138  -137 -138    -125  -127   -125     -120   -120  -116  -132      -131  -125    -132   -102  -125;
+
+        $duplicates: fish1 fish3 jellyfish fish5;
+        $d-top:      134   470   640       50;
+        $d-left:     -200  1160  480       1160;
+
+        $animation-items: bottle1 bottle2 bottle3 bottle4 soda   sauce  water  tire crab   fish1     turtle fish2     fish3      jellyfish fish4     fish5      seahorse lobster octopus starfish;
+        $a-name:          float   float   float   float   float  float  float  tire crab   swim-left turtle swim-left swim-right swim-up   swim-left swim-right seahorse lobster octopus starfish;
+        $a-duration:      15      8       12      18      10     23     17     25   5      8         8      5         6          6         6         5          3        6       8       9;
+
+        li {
+            position: absolute;
+            transition: opacity .5s;
+            animation: bob 8s infinite;
+            background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
+            background-repeat: no-repeat;
+
+            @for $i from 1 through 15 {
+                &[data-ref=#{nth($nonpollutants, $i)}] {
+                    top: #{nth($n-top, $i) + px};
+                    left: #{nth($n-left, $i) + px};
+                    background-image: url($media-server-game + 'SpritesAnimations/sprite.nonpollutant.png');
+                    background-position: #{nth($n-bg-x, $i) + px} 0;
+                    background-size: #{nth($n-bg-size, $i) + px};
+                    width: #{nth($n-width, $i) + px};
+                    height: #{nth($n-height, $i) + px};
+
+                    &:hover {
+                        background-position: #{nth($n-bg-x, $i) + px} #{nth($n-h-y, $i) + px};
+                    }
+                  }
+              }
+
+            @for $i from 1 through 17 {
+                &[data-ref=#{nth($pollutants, $i)}] {
+                    top: #{nth($p-top, $i) + px};
+                    left: #{nth($p-left, $i) + px};
+                    background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
+                    background-position: #{nth($p-bg-x, $i) + px} 0;
+                    background-size: #{nth($p-bg-size, $i) + px};
+                    width: #{nth($p-width, $i) + px};
+                    height: #{nth($p-height, $i) + px};
+
+                    &:hover {
+                        background-position: #{nth($p-bg-x, $i) + px} #{nth($p-h-y, $i) + px};
+                    }
+
+                    &.HIGHLIGHTED {
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+                }
+            }
+
+            @for $i from 1 through 4 {
+                &[data-ref=#{nth($duplicates, $i)}].duplicate {
+                    top: #{nth($d-top, $i) + px};
+                    left: #{nth($d-left, $i) + px};
+                    transform: scale(.7);
+                }
+            }
+
+            @for $i from 1 through 20 {
+                &[data-ref=#{nth($animation-items, $i)}] {
+                    animation: #{nth($a-name, $i)} #{nth($a-duration, $i) + s} linear infinite;
+
+                    &.duplicate {
+                        animation: #{nth($a-name, $i) + -duplicate} #{nth($a-duration, $i) - 1 + s} linear infinite;
+                    }
+                }
+            }
+
+          }
+      }
+
+    .timer {
+        position: absolute;
+        bottom: -10px;
+        left: 50px;
+        color: $white;
+
+        img {
+            margin: 0;
+            width: 180px;
+            vertical-align: middle;
+        }
+
+        span {
+            display: inline-block;
+            margin-left: -15px;
+            padding-bottom: 18px;
+            vertical-align: bottom;
+            font-size: 36px;
+        }
+      }
+
+    .group > .center.OPEN {
+        z-index: 1;
     }
-  }
 
-  &.OPEN {
-    opacity: 1;
-  }
+    .reveal {
 
-  &.REPLAY .next-screen {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
+        &.open-1 button {
+            display: none;
+        }
 
-  }
+        button {
+            margin-top: -20px;
+            margin-bottom: 30px;
+            background-image: url($media-server-game + 'ImageAssets/IMG_10.3.png');
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-size: 100%;
+            width: 146px;
+            height: 146px;
+
+            &:hover {
+                background-position: left bottom;
+            }
+       }
+    }
+
+    &.REVEAL-OPEN {
+        .group > .center {
+            z-index: 1;
+        }
+
+        .selectable,
+        .timer {
+            opacity: 0;
+        }
+    }
+
+    &.TOUCH,
+    &.REVEAL-OPEN {
+        cursor: auto;
+
+        .cursor {
+            opacity: 0;
+        }
+    }
+
+    &.OPEN {
+        opacity: 1;
+    }
+
+    &.REPLAY .next-screen {
+        transform: rotate(0deg);
+        opacity: 1;
+        cursor: pointer;
+    }
 }
 
 body:not(.DEMO) #trash.tryAgain {
-  .prev-screen,
-  .next-screen {
-    opacity: 0;
-    pointer-events: none;
-  }
+    .prev-screen,
+    .next-screen {
+        opacity: 0;
+        pointer-events: none;
+    }
 }

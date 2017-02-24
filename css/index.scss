@@ -2,640 +2,627 @@
 @import 'mixins';
 
 @font-face {
-  font-family: 'KomikaAxis';
-  src: url('KOMIKAX_.eot'); /* IE9 Compat Modes */
-  src: url('KOMIKAX_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-     url('KOMIKAX_.woff') format('woff'), /* Modern Browsers */
-     url('KOMIKAX_.ttf')  format('truetype'), /* Safari, Android, iOS */
-     url('KOMIKAX_.svg#5cb969d55818caf596e9b0e1ab0f50d8') format('svg'); /* Legacy iOS */
-
-  font-style:   normal;
-  font-weight:  400;
+    font-family: 'KomikaAxis';
+    src: url('KOMIKAX_.eot'); /* IE9 Compat Modes */
+    src: url('KOMIKAX_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('KOMIKAX_.woff') format('woff'), /* Modern Browsers */
+        url('KOMIKAX_.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('KOMIKAX_.svg#5cb969d55818caf596e9b0e1ab0f50d8') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 400;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-html, body, body > div, body > div > div {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  cursor: default;
+html,
+body,
+body > div,
+body > div > div {
+    margin: 0;
+    cursor: default;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
 }
 
 html {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
-  color: $text-color;
+    color: $text-color;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body > div > div {
-  position: relative;
-  width: 960px;
-  height: 540px;
-  margin: auto;
-  font-size: 20px;
-  background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
-  background-size: cover;
-
-
-  .background {
-    opacity: 0;
-    transition: opacity .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    margin: auto;
+    background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
     background-size: cover;
-    background-position: center center;
+    width: 960px;
+    height: 540px;
+    font-size: 20px;
 
-    &.garbage {
-      background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+
+        &.garbage {
+            background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
+        }
+      }
+
+    &.garbage > div > .background.garbage {
+        opacity: 1;
     }
-  }
-
-  &.garbage > div > .background.garbage {
-    opacity: 1;
-  }
 }
 
 // preload assets
 #asset-bin {
-  display: none;
+    display: none;
 }
 
 [pl-bg] {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
+    margin: 0;
+    outline: none;
+    border: 0;
 
-  font-family: inherit;
-  font-size: inherit;
-  color: transparent;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+    background-color: transparent;
+    background-image: url($media-server-game + 'SpritesAnimations/BU_1.png');
+    background-position: left top;
+    background-size: auto 300px;
 
-  background-image: url($media-server-game + 'SpritesAnimations/BU_1.png');
-  background-size: auto 300px;
-  background-position: left top;
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
 
-  &.close {
-    width: 36px;
-    height: 36px;
-    background-position: -508px -58px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px;
-    z-index: 2;
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -508px -58px;
+        width: 36px;
+        height: 36px;
 
-    &:hover {
-      background-position: -508px -208px;
+        &:hover {
+            background-position: -508px -208px;
+        }
+      }
+
+    &.next-screen,
+    &.prev-screen {
+        width: 50px;
+        height: 50px;
     }
-  }
 
-  &.next-screen,
-  &.prev-screen {
-    width: 50px;
-    height: 50px;
-  }
+    &.next-screen {
+        background-position: -350px -50px;
+        cursor: default;
 
-  &.next-screen {
-    background-position: -350px -50px;
-    cursor: default;
-
-    &:hover {
-      background-position: -350px -200px;
+        &:hover {
+            background-position: -350px -200px;
+        }
     }
-  }
 
-  &.prev-screen {
-    background-position: -200px -50px;
+    &.prev-screen {
+        background-position: -200px -50px;
 
-    &:hover {
-      background-position: -200px -200px;
+        &:hover {
+            background-position: -200px -200px;
+        }
     }
-  }
 
-  &.quit-yes {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 387px 344px;
+    &.quit-yes {
+        background-position: 387px 344px;
+        background-size: auto 400px;
+        width: 170px;
+        height: 90px;
 
-    &:hover {
-      background-position: 387px 144px;
+        &:hover {
+            background-position: 387px 144px;
+        }
     }
-  }
 
-  &.quit-no {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 187px 344px;
+    &.quit-no {
+        background-position: 187px 344px;
+        background-size: auto 400px;
+        width: 170px;
+        height: 90px;
 
-    &:hover {
-      background-position: 187px 144px;
+        &:hover {
+            background-position: 187px 144px;
+        }
     }
-  }
 }
 
 h2 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 h3 {
-  font-size: 36px;
-  margin: 0;
+    margin: 0;
+    font-size: 36px;
 }
 
 p {
-  font-size: 36px;
-  margin: 0;
+    margin: 0;
+    font-size: 36px;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-  width: 960px;
-  height: 540px;
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
-  opacity: 0;
-  display: none;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
+    width: 960px;
+    height: 540px;
 }
 
-.screen.last {}
-
 .screen.OPEN {
-  opacity: 1;
-  transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
-  display: block;
+    display: block;
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 1;
 }
 
 .screen .next-screen,
 .screen .prev-screen {
-  position: absolute;
-  display: block;
-  bottom: 1%;
-  margin-bottom: 5px;
-  z-index: 2;
+    display: block;
+    position: absolute;
+    bottom: 1%;
+    z-index: 2;
+    margin-bottom: 5px;
 }
 
 .screen .next-screen {
-  margin-right: 5px;
-  right: 0;
-  opacity: 0;
-  transform: rotate(-180deg);
-  transition: opacity 1s, transform 1s;
+    right: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 0;
+    margin-right: 5px;
 }
 
 .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
 .screen.GATED .next-screen {
-  opacity: 0;
-  cursor: default;
+    opacity: 0;
+    cursor: default;
 }
 
 .skoash-game.MENU-quit .screen {
-  &:not(#quit) {
-    opacity: 0;
-    pointer-events: none;
-  }
+    &:not(#quit) {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .pl-game.DEMO .screen .next-screen,
 .screen.REPLAY .next-screen,
 .screen.COMPLETE .next-screen {
-  opacity: 1;
-  transform: rotate(0deg);
-  cursor: pointer;
-}
-
-.screen .next-screen:hover {
-
+    transform: rotate(0deg);
+    opacity: 1;
+    cursor: pointer;
 }
 
 .screen .prev-screen {
-  margin-left: 5px;
-  left: 0;
-
-}
-
-.screen .prev-screen:hover {
-
+    left: 0;
+    margin-left: 5px;
 }
 
 .screen {
-  &.no-frame {
-    color: #fff;
+    &.no-frame {
+        color: $white;
 
-    .frame {
-      text-align: center;
+        .frame {
+            text-align: center;
+        }
     }
-  }
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 // the following css is specific to this game
 
 .frame {
-  position: relative;
-  text-align: center;
-  font-size: 40px;
-  line-height: 1.2;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  padding: 40px;
-  width: 720px;
-  height: 480px;
-  background-image: url($media-server-game + 'ImageAssets/frame.1.png');
+    position: relative;
+    background-image: url($media-server-game + 'ImageAssets/frame.1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 40px;
+    width: 720px;
+    height: 480px;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 40px;
 }
 
 .screen.large-frame {
-  .frame {
-    padding: 60px 75px;
-    margin: 40px auto;
-    width: 860px;
-    height: 460px;
-    text-align: center;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    p:only-child {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-    }
-
-    .title {
-      max-height: 100px;
-      margin-top: -30px;
-    }
-  }
-
-  &.OPEN {
     .frame {
-      -webkit-animation-name: fadeInDown;
-      animation-name: fadeInDown;
+        margin: 40px auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        padding: 60px 75px;
+        width: 860px;
+        height: 460px;
+        text-align: center;
+
+        p:only-child {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        .title {
+            margin-top: -30px;
+            max-height: 100px;
+        }
     }
-  }
+
+    &.OPEN {
+        .frame {
+            animation-name: fadeInDown;
+        }
+    }
 }
 
 #title {
-  .group {
-    width: 960px;
-    height: 540px;
-  }
-
-  .fish {
-    position: absolute;
-    height: 540px;
-    left: 40px;
-    top: 0;
-  }
-
-  .title {
-    position: absolute;
-    width: 680px;
-    left: 280px;
-    top: -50px;
-  }
-
-  .prev-screen {
-    display: none;
-  }
-
-  .next-screen {
-    background-position: 0px -30px;
-    width: 150px;
-    height: 90px;
-    right: 80px;
-
-    &:hover {
-      background-position: 0px -180px;
+    .group {
+        width: 960px;
+        height: 540px;
     }
-  }
 
-  &.OPEN {
     .fish {
-      animation-name: fadeInRight;
-      animation-delay: 1s;
+        position: absolute;
+        top: 0;
+        left: 40px;
+        height: 540px;
     }
 
     .title {
-      animation: title 6s infinite;
+        position: absolute;
+        top: -50px;
+        left: 280px;
+        width: 680px;
     }
-  }
+
+    .prev-screen {
+        display: none;
+    }
+
+    .next-screen {
+        right: 80px;
+        background-position: 0 -30px;
+        width: 150px;
+        height: 90px;
+
+        &:hover {
+            background-position: 0 -180px;
+        }
+    }
+
+    &.OPEN {
+        .fish {
+            animation-name: fadeInRight;
+            animation-delay: 1s;
+        }
+
+        .title {
+            animation: title 6s infinite;
+        }
+    }
 }
 
 #you-feel {
-
-  > div {
-    text-align: center;
-  }
-
-  .frame > img {
-    width: 100%;
-  }
-
-  .frame > div {
-    position: absolute;
-    left: 50%;
-    bottom: 61px;
-    transform: translateX(-50%);
-  }
-
-  .selectable {
-    margin: -10px;
-    height: 270px;
-    justify-content: center;
-  }
-
-  li {
-    width: 300px;
-    margin: 0 -50px;
-    background-size: auto;
-    background-position-y: 64px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-
-    &.img-0 {
-      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
-      background-position-x: -755px;
+    > div {
+        text-align: center;
     }
 
-    &.img-1 {
-      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
-      background-position-x: -27px;
+    .frame > img {
+        width: 100%;
     }
 
-    &.img-2 {
-      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
-      background-position-x: center;
+    .frame > div {
+        position: absolute;
+        bottom: 61px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    &.SELECTED,
-    &:hover {
-        background-position-y: -188px;
+    .selectable {
+        margin: -10px;
+        height: 270px;
+        justify-content: center;
     }
 
-    &.SELECTED {
-      animation-name: pulse;
-      animation-iteration-count: 2;
+    li {
+        margin: 0 -50px;
+        background-repeat: no-repeat;
+        background-size: auto;
+        cursor: pointer;
+        width: 300px;
+        background-position-y: 64px;
+
+        &.img-0 {
+            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-position-x: -755px;
+        }
+
+        &.img-1 {
+            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-position-x: -27px;
+        }
+
+        &.img-2 {
+            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-position-x: center;
+        }
+
+        &.SELECTED,
+        &:hover {
+            background-position-y: -188px;
+        }
+
+        &.SELECTED {
+            animation-name: pulse;
+            animation-iteration-count: 2;
+        }
     }
-  }
 }
 
 .VOICE-OVER #you-feel ul {
-  cursor: auto;
-  pointer-events: none;
+    cursor: auto;
+    pointer-events: none;
 }
 
 
 #water-pollution {
 
-  img {
-    vertical-align: middle;
-    margin: 0 -20px;
-  }
-
-  .words {
-    width: 360px;
-  }
-
-  .fish {
-    width: 330px;
-    animation-name: title;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-  }
-
-  .bubbles {
-    div {
-
-      -webkit-box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
-      -moz-box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
-      box-shadow: 0px 0px 5px 2px rgba(75,190,140,1);
-
-      background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,140,0), rgba(75,190,140,.1), rgba(75,190,140,.3), rgba(255,255,255,.7));
-      background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(75,190,140,.2)), to(rgba(255,255,255,.7)));
-      background:gradient(center 45deg, circle closest-corner, rgba(75,190,140,0), rgba(75,190,140,.1), rgba(75,190,140,.3), rgba(255,255,255,.7));
-      background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,207,0.1) 51%, rgba(9,133,207,0.3) 71%, rgba(9,133,207,.7) 100%);
+    img {
+        margin: 0 -20px;
+        vertical-align: middle;
     }
-  }
+
+    .words {
+        width: 360px;
+    }
+
+    .fish {
+        animation-name: title;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        width: 330px;
+    }
+
+    .bubbles {
+        div {
+            box-shadow: 0 0 5px 2px $blue2;
+
+            // scss-lint:disable VendorPrefix
+            background: -moz-radial-gradient(center 45deg, circle closest-corner, $bubble-color-15, $bubble-color-16, $bubble-color-17, $bubble-color-18);
+            background: -webkit-gradient(radial, center center, 0, center center, 100, from($bubble-color-19), to($bubble-color-20));
+            background: gradient(center 45deg, circle closest-corner, $bubble-color-21, $bubble-color-22, $bubble-color-23, $bubble-color-24);
+            background: -ms-radial-gradient(center, ellipse cover, $bubble-color-25 0%, $bubble-color-26 51%, $bubble-color-27 71%, $bubble-color-28 100%);
+            // scss-lint:enable VendorPrefix
+        }
+      }
 }
 
 #healthy-water {
-  .words {
-    width: 620px;
-    margin: 10px 0 0;
-  }
-
-  .selectable {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  li {
-    list-style: none;
-    width: 250px;
-    height: 250px;
-    background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
-    background-position-y: top;
-    background-size: 500px;
-
-    &:nth-child(1) {
-        background-position-x: left;
+    .words {
+        margin: 10px 0 0;
+        width: 620px;
     }
 
-    &:nth-child(2) {
-        background-position-x: right;
+    .selectable {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        justify-content: space-around;
     }
 
-    &:hover,
-    &.SELECTED {
-      background-position-y: bottom;
-      cursor: pointer;
-    }
+    li {
+        background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
+        background-size: 500px;
+        width: 250px;
+        height: 250px;
+        list-style: none;
+        background-position-y: top;
 
-    &.SELECTED {
-      animation-name: pulse;
-      animation-iteration-count: 2;
-    }
-  }
+        &:nth-child(1) {
+            background-position-x: left;
+        }
+
+        &:nth-child(2) {
+            background-position-x: right;
+        }
+
+        &:hover,
+        &.SELECTED {
+            cursor: pointer;
+            background-position-y: bottom;
+        }
+
+        &.SELECTED {
+            animation-name: pulse;
+            animation-iteration-count: 2;
+        }
+      }
 }
 
 .VOICE-OVER #healthy-water ul {
-  cursor: auto;
-  pointer-events: none;
+    cursor: auto;
+    pointer-events: none;
 }
 
 
 #clean-water {
-  p {
-    width: 360px;
-    margin-top: 100px;
-    font-weight: bold;
-  }
+    p {
+        margin-top: 100px;
+        width: 360px;
+        font-weight: bold;
+    }
 
-  img {
-    position: absolute;
-    right: 35px;
-    bottom: 43px;
-    height: 360px;
-  }
+    img {
+        position: absolute;
+        right: 35px;
+        bottom: 43px;
+        height: 360px;
+    }
 }
 
 #bubble-up {
-  .center div {
-    text-align: center;
-  }
+    .center div {
+        text-align: center;
+    }
 
-  img {
-    width: 640px;
-    margin-top: -60px;
-  }
+    img {
+        margin-top: -60px;
+        width: 640px;
+    }
 
-  p {
-    margin-top: -30px;
-  }
+    p {
+        margin-top: -30px;
+    }
 }
 
 #pollutes-water {
-  .stars {
-    margin: 0 auto;
-    width: 380px;
-    height: 200px;
-    background-size: auto 200px;
-    background-repeat: no-repeat;
-    background-position: -727px center;
-    background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
-  }
+    .stars {
+        margin: 0 auto;
+        background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
+        background-repeat: no-repeat;
+        background-position: -727px center;
+        background-size: auto 200px;
+        width: 380px;
+        height: 200px;
+    }
 
-  img {
-    width: 600px;
-    margin: -30px 0;
-  }
+    img {
+        margin: -30px 0;
+        width: 600px;
+    }
 
-  &.OPEN {
-    .stars-container {
-      background-position: 0px center;
+    &.OPEN {
+        .stars-container {
+            background-position: 0 center;
 
-      @for $i from 1 through 3 {
-        &.star-#{$i} {
-          animation: stars-#{$i} .4s forwards;
-          .stars {
-            background-position: (-363.5 * ($i - 1))+px center;
-          }
+            @for $i from 1 through 3 {
+                &.star-#{$i} {
+                    animation: stars-#{$i} .4s forwards;
+
+                    .stars {
+                        background-position: (-363.5 * ($i - 1)) + px center;
+                    }
+                }
+            }
         }
       }
-    }
-  }
 }
 
 #flip {
 
-  .fish {
-    max-height: 400px;
-    margin-top: -30px;
-  }
-
-  .flip {
-    width: 280px;
-    margin-top: -30px;
-  }
-
-  .frame > div {
-      display: inline-block;
-      width: 380px;
-      margin-left: -80px;
-  }
-
-  .flip-container {
-    opacity: 0;
-    transition: opacity .5s;
-
-    &.show {
-      opacity: 1;
-    }
-  }
-
-  &.OPEN {
     .fish {
-      animation-name: title;
-      animation-duration: 4s;
-      animation-iteration-count: infinite;
+        margin-top: -30px;
+        max-height: 400px;
     }
 
     .flip {
-      animation: bob 4s infinite;
+        margin-top: -30px;
+        width: 280px;
     }
-  }
+
+    .frame > div {
+        display: inline-block;
+        margin-left: -80px;
+        width: 380px;
+    }
+
+    .flip-container {
+        transition: opacity .5s;
+        opacity: 0;
+
+        &.show {
+            opacity: 1;
+        }
+    }
+
+    &.OPEN {
+        .fish {
+            animation-name: title;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        .flip {
+            animation: bob 4s infinite;
+        }
+    }
 }
 
 #quit {
 
-  .frame {
-    width: 720px;
-    height: 440px;
-    text-align: center;
-    padding: 70px 80px;
+    .frame {
+        padding: 70px 80px;
+        width: 720px;
+        height: 440px;
+        text-align: center;
 
-    .background {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
 
-    h2 {
-      margin: 0;
-      font-size: 40px;
-    }
+        h2 {
+            margin: 0;
+            font-size: 40px;
+        }
 
-    h3 {
-      margin: 20px 0 10px;
-      font-size: 30px;
-    }
+        h3 {
+            margin: 20px 0 10px;
+            font-size: 30px;
+        }
 
-    button {
-      margin: 20px 10px;
-    }
-  }
+        button {
+            margin: 20px 10px;
+        }
+      }
 }
