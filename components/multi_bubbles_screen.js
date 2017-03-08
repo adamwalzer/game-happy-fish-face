@@ -1,10 +1,5 @@
 import ClassNames from 'classnames';
 
-import Score from 'shared/components/score/0.1';
-import Repeater from 'shared/components/repeater/0.1';
-import Selectable from 'shared/components/selectable/0.1';
-import MediaCollection from 'shared/components/media_collection/0.1';
-
 const INCREMENT = 10;
 const DECREMENT = 10;
 const CORRECT_BUBBLES = 10;
@@ -68,7 +63,7 @@ export default function (props, ref, key) {
                 type="voiceOver"
                 src={`${CMWN.MEDIA.VO}WhatCan.mp3`}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 ref="media-collection"
                 play={_.get(props, 'data.media.play', null)}
             >
@@ -134,8 +129,8 @@ export default function (props, ref, key) {
                     src={`${CMWN.MEDIA.EFFECT}SwervySlideUp.mp3`}
                     volume={.4}
                 />
-            </MediaCollection>
-            <Repeater className="bubbles" ammount={14} />
+            </skoash.MediaCollection>
+            <skoash.Repeater className="bubbles" ammount={14} />
             <skoash.Image src={`${CMWN.MEDIA.IMAGE}IMG_7.1.png`} className="clean-water" />
             <skoash.Component className="meter">
                 <skoash.Image
@@ -156,7 +151,7 @@ export default function (props, ref, key) {
                     </skoash.Component>
                 </skoash.Component>
             </skoash.Component>
-            <Selectable
+            <skoash.Selectable
                 ref="selectable"
                 onSelect={onSelect}
                 selectClass="HIGHLIGHTED"
@@ -183,7 +178,7 @@ export default function (props, ref, key) {
                     <skoash.ListItem select data-ref="talk" />,
                 ]}
             />
-            <Score
+            <skoash.Score
                 ref="score"
                 correct={_.get(props, 'data.score.correct', 0)}
                 incorrect={_.get(props, 'data.score.incorrect', 0)}
