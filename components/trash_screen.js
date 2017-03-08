@@ -111,12 +111,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     data-ref="correct"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Right.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Right.mp3`}
                 />
                 <skoash.Audio
                     data-ref="incorrect"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Wrong.mp3`}
                     complete
                 />
             </MediaCollection>
@@ -130,13 +130,13 @@ export default function (props, ref, key) {
                             openReveal={_.get(props, 'data.reveal.open', null)}
                             list={[
                                 <skoash.Component type="li" complete>
-                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.2.png`} />
+                                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_10.2.png`} />
                                     <p>
                                         You ran out of time!
                                     </p>
                                 </skoash.Component>,
                                 <skoash.Component type="li" className="tryAgain">
-                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.1.png`} />
+                                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_10.1.png`} />
                                     <p>
                                         Take this offline.<br /> Never throw the trash in the water.
                                     </p>
@@ -145,18 +145,18 @@ export default function (props, ref, key) {
                             assets={[
                                 <skoash.Audio
                                     type="voiceOver"
-                                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/TryAgain.mp3`}
+                                    src={`${CMWN.MEDIA.VO}TryAgain.mp3`}
                                     complete
                                 />,
                                 <skoash.MediaSequence silentOnStart>
                                     <skoash.Audio
                                         type="voiceOver"
-                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/GoodJob.mp3`}
+                                        src={`${CMWN.MEDIA.VO}GoodJob.mp3`}
                                         complete
                                     />
                                     <skoash.Audio
                                         type="voiceOver"
-                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/NeverThrow.mp3`}
+                                        src={`${CMWN.MEDIA.VO}NeverThrow.mp3`}
                                         complete
                                     />
                                 </skoash.MediaSequence>,
@@ -170,7 +170,7 @@ export default function (props, ref, key) {
                         timeout={90000}
                         leadingContent={
                             <skoash.Image
-                                src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img_9.1.png`}
                             />
                         }
                         onComplete={timerComplete}

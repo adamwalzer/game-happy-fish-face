@@ -66,7 +66,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WhatCan.mp3`}
+                src={`${CMWN.MEDIA.VO}WhatCan.mp3`}
             />
             <MediaCollection
                 ref="media-collection"
@@ -75,84 +75,84 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     data-ref="swim"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/Swim.mp3`}
+                    src={`${CMWN.MEDIA.VO}Swim.mp3`}
                 />
                 <skoash.Audio
                     data-ref="washFace"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WashFace.mp3`}
+                    src={`${CMWN.MEDIA.VO}WashFace.mp3`}
                 />
                 <skoash.Audio
                     data-ref="drinkIt"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/DrinkIt.mp3`}
+                    src={`${CMWN.MEDIA.VO}DrinkIt.mp3`}
                 />
                 <skoash.Audio
                     data-ref="brushTeeth"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/BrushTeeth.mp3`}
+                    src={`${CMWN.MEDIA.VO}BrushTeeth.mp3`}
                 />
                 <skoash.Audio
                     data-ref="takeShowers"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/TakeShowers.mp3`}
+                    src={`${CMWN.MEDIA.VO}TakeShowers.mp3`}
                 />
                 <skoash.Audio
                     data-ref="cleanHouse"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/CleanHouse.mp3`}
+                    src={`${CMWN.MEDIA.VO}CleanHouse.mp3`}
                 />
                 <skoash.Audio
                     data-ref="cook"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/Cook.mp3`}
+                    src={`${CMWN.MEDIA.VO}Cook.mp3`}
                 />
                 <skoash.Audio
                     data-ref="growCrops"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/GrowCrops.mp3`}
+                    src={`${CMWN.MEDIA.VO}GrowCrops.mp3`}
                 />
                 <skoash.Audio
                     data-ref="laundry"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/Laundry.mp3`}
+                    src={`${CMWN.MEDIA.VO}Laundry.mp3`}
                 />
                 <skoash.Audio
                     data-ref="washDishes"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WashDishes.mp3`}
+                    src={`${CMWN.MEDIA.VO}WashDishes.mp3`}
                 />
                 <skoash.Audio
                     data-ref="incorrect"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Wrong.mp3`}
                     complete
                 />
                 <skoash.Audio
                     data-ref="slide-up"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/SwervySlideUp.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}SwervySlideUp.mp3`}
                     volume={.4}
                 />
             </MediaCollection>
             <Repeater className="bubbles" ammount={14} />
-            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/IMG_7.1.png`} className="clean-water" />
+            <skoash.Image src={`${CMWN.MEDIA.IMAGE}IMG_7.1.png`} className="clean-water" />
             <skoash.Component className="meter">
                 <skoash.Image
-                    src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/stroke.png`}
+                    src={`${CMWN.MEDIA.IMAGE}stroke.png`}
                     className="stroke"
                 />
                 <skoash.Component className="fill">
                     <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}>
                         <skoash.Image
-                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/meter.fill.png`}
+                            src={`${CMWN.MEDIA.IMAGE}meter.fill.png`}
                         />
                     </skoash.Component>
                     <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}
                         className={ClassNames({'complete': _.get(props, 'data.meter.complete', false)})}
                     >
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_1.1.png`} />
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/sickfish.png`} />
+                        <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_1.1.png`} />
+                        <skoash.Image src={`${CMWN.MEDIA.IMAGE}sickfish.png`} />
                     </skoash.Component>
                 </skoash.Component>
             </skoash.Component>
@@ -188,7 +188,7 @@ export default function (props, ref, key) {
                 correct={_.get(props, 'data.score.correct', 0)}
                 incorrect={_.get(props, 'data.score.incorrect', 0)}
                 leadingContent={
-                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/IMG_7.2.png`} />
+                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}IMG_7.2.png`} />
                 }
                 checkComplete={false}
                 complete

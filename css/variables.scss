@@ -1,4 +1,8 @@
-$media-server-game: $media-server + 'game/happy-fish-face/';
+$media: $media-server + 'games/happy-fish-face/';
+$sprite: $media + 'sprites-animations/';
+$image: $media + 'image-assets/';
+$frame: $media + 'frames/';
+$font: $media + 'fonts/';
 
 $text-color: #000;
 $white: #fff;

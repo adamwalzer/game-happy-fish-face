@@ -31,7 +31,7 @@ export default function (props, ref, key) {
             id="you-feel"
         >
             <skoash.Audio ref="vo" type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/YouFeel.mp3`}
+                src={`${CMWN.MEDIA.VO}YouFeel.mp3`}
             />
             <MediaCollection
                 play={_.get(props, 'data.media.play', null)}
@@ -40,22 +40,22 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/LeftEmoji.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}LeftEmoji.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/CenterEmoji.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}CenterEmoji.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/RightEmoji.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}RightEmoji.mp3`}
                 />
             </MediaCollection>
             <skoash.Component ref="center" className="center">
                 <skoash.Component ref="group" className="group">
                  <skoash.Component ref="frame" className="frame" pl-bg>
                         <skoash.Image ref="title"
-                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_2.1.png`}
+                            src={`${CMWN.MEDIA.IMAGE}img_2.1.png`}
                         />
                         <Selectable
                             ref="selectable"

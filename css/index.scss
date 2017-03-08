@@ -37,7 +37,7 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
-    background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
+    background: url($image + 'BKG_1.jpg') bottom center no-repeat;
     background-size: cover;
     width: 960px;
     height: 540px;
@@ -56,7 +56,7 @@ body > div > div {
         height: 100%;
 
         &.garbage {
-            background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
+            background-image: url($image + 'BKG_2.jpg');
         }
       }
 
@@ -82,7 +82,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url($media-server-game + 'SpritesAnimations/BU_1.png');
+    background-image: url($sprite + 'BU_1.png');
     background-position: left top;
     background-size: auto 300px;
 
@@ -258,7 +258,7 @@ p {
 
 .frame {
     position: relative;
-    background-image: url($media-server-game + 'ImageAssets/frame.1.png');
+    background-image: url($image + 'frame.1.png');
     background-repeat: no-repeat;
     background-size: 100%;
     padding: 40px;
@@ -379,17 +379,17 @@ p {
         background-position-y: 64px;
 
         &.img-0 {
-            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-image: url($sprite + 'sprite%20sheet%20emojis-01.png');
             background-position-x: -755px;
         }
 
         &.img-1 {
-            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-image: url($sprite + 'sprite%20sheet%20emojis-01.png');
             background-position-x: -27px;
         }
 
         &.img-2 {
-            background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+            background-image: url($sprite + 'sprite%20sheet%20emojis-01.png');
             background-position-x: center;
         }
 
@@ -457,7 +457,7 @@ p {
     }
 
     li {
-        background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
+        background-image: url($sprite + 'sprite.earth.png');
         background-size: 500px;
         width: 250px;
         height: 250px;
@@ -524,7 +524,7 @@ p {
 #pollutes-water {
     .stars {
         margin: 0 auto;
-        background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
+        background-image: url($sprite + 'sprite.stars.png');
         background-repeat: no-repeat;
         background-position: -727px center;
         background-size: auto 200px;

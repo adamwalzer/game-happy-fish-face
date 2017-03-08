@@ -20,37 +20,37 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref="star-1"
                             type="sfx"
-                            src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Star1.mp3`}
+                            src={`${CMWN.MEDIA.EFFECT}Star1.mp3`}
                             playTarget="star-1"
                         />
                         <skoash.Audio
                             ref="star-2"
                             type="sfx"
-                            src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Star2.mp3`}
+                            src={`${CMWN.MEDIA.EFFECT}Star2.mp3`}
                             playTarget="star-2"
                         />
                         <skoash.Audio
                             ref="star-3"
                             type="sfx"
-                            src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Star3.mp3`}
+                            src={`${CMWN.MEDIA.EFFECT}Star3.mp3`}
                             playTarget="star-3"
                         />
                         <skoash.Audio
                             ref="vo-1"
                             type="voiceOver"
-                            src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/PollutesWater.mp3`}
+                            src={`${CMWN.MEDIA.VO}PollutesWater.mp3`}
                         />
                         <skoash.Audio
                             ref="vo-2"
                             type="voiceOver"
-                            src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/Remove.mp3`}
+                            src={`${CMWN.MEDIA.VO}Remove.mp3`}
                         />
                     </skoash.MediaSequence>
                     <skoash.Component className="frame">
                         <skoash.Component className={starContainerClasses}>
                             <div className="stars" />
                         </skoash.Component>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_8.1.png`} />
+                        <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_8.1.png`} />
                         <p>
                             In this game remove everything<br /> that doesn't belong in the water.
                         </p>
