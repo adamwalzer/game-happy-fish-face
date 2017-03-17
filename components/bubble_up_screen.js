@@ -10,12 +10,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-1"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/BubbleUP.mp3`}
+                    src={`${CMWN.MEDIA.VO}BubbleUP.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-2"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/Answer.mp3`}
+                    src={`${CMWN.MEDIA.VO}Answer.mp3`}
                 />
             </skoash.MediaSequence>
             <skoash.Component className="center">
@@ -23,7 +23,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref="frame" className="frame">
                         <skoash.Component ref="center" className="center">
                             <skoash.Component>
-                                <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_6.1.png`} />
+                                <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_6.1.png`} />
                                 <p>
                                     Answer the question by<br /> popping the correct bubbles.
                                 </p>

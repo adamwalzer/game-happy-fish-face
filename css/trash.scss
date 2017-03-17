@@ -11,7 +11,7 @@
         transition: opacity .5s;
         opacity: 1;
         z-index: 1;
-        background-image: url($media-server-game + 'ImageAssets/img_9.3.png');
+        background-image: url($image + 'img_9.3.png');
         background-position: -740px 0;
         background-size: 100%;
         width: 250px;
@@ -65,14 +65,14 @@
             position: absolute;
             transition: opacity .5s;
             animation: bob 8s infinite;
-            background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
+            background-image: url($sprite + 'sprite.pollutant.png');
             background-repeat: no-repeat;
 
             @for $i from 1 through 15 {
                 &[data-ref=#{nth($nonpollutants, $i)}] {
                     top: #{nth($n-top, $i) + px};
                     left: #{nth($n-left, $i) + px};
-                    background-image: url($media-server-game + 'SpritesAnimations/sprite.nonpollutant.png');
+                    background-image: url($sprite + 'sprite.nonpollutant.png');
                     background-position: #{nth($n-bg-x, $i) + px} 0;
                     background-size: #{nth($n-bg-size, $i) + px};
                     width: #{nth($n-width, $i) + px};
@@ -88,7 +88,7 @@
                 &[data-ref=#{nth($pollutants, $i)}] {
                     top: #{nth($p-top, $i) + px};
                     left: #{nth($p-left, $i) + px};
-                    background-image: url($media-server-game + 'SpritesAnimations/sprite.pollutant.png');
+                    background-image: url($sprite + 'sprite.pollutant.png');
                     background-position: #{nth($p-bg-x, $i) + px} 0;
                     background-size: #{nth($p-bg-size, $i) + px};
                     width: #{nth($p-width, $i) + px};
@@ -160,7 +160,7 @@
         button {
             margin-top: -20px;
             margin-bottom: 30px;
-            background-image: url($media-server-game + 'ImageAssets/IMG_10.3.png');
+            background-image: url($image + 'IMG_10.3.png');
             background-repeat: no-repeat;
             background-position: left top;
             background-size: 100%;

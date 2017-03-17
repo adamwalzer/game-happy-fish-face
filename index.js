@@ -16,26 +16,24 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/HappyFishFace/';
-
 // TODO: need BKG3 audio on media server AIM 12/15/16
 
 skoash.start(
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: YouFeelScreen,
-            3: WaterPollutionScreen,
-            4: HealthyWaterScreen,
-            5: CleanWaterScreen,
-            6: BubbleUpScreen,
-            7: MultiBubblesScreen,
-            8: PollutesWaterScreen,
-            9: TrashScreen,
-            10: FlipScreen,
-        }}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            YouFeelScreen,
+            WaterPollutionScreen,
+            HealthyWaterScreen,
+            CleanWaterScreen,
+            BubbleUpScreen,
+            MultiBubblesScreen,
+            PollutesWaterScreen,
+            TrashScreen,
+            FlipScreen,
+        ]}
         menus={{
             quit: QuitScreen,
         }}
@@ -47,41 +45,48 @@ skoash.start(
         }}
         loader={<Loader />}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />,
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${CMWN.MEDIA.EFFECT}hff-sx-bkg-1.mp3`}
+                loop
+            />,
             <skoash.Audio
                 ref="bkg-2"
                 type="background"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG1.mp3`} loop
+                src={`${CMWN.MEDIA.EFFECT}BKG1.mp3`}
+                loop
             />,
             <skoash.Audio
                 ref="bkg-3"
                 type="background"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG2.mp3`} loop
+                src={`${CMWN.MEDIA.EFFECT}BKG2.mp3`}
+                loop
             />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/NextClick.mp3`}
+                src={`${CMWN.MEDIA.EFFECT}NextClick.mp3`}
             />,
             <skoash.Audio
                 ref="screen-complete"
                 type="sfx"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/NextAppear.mp3`}
+                src={`${CMWN.MEDIA.EFFECT}NextAppear.mp3`}
             />,
             <skoash.Image
                 ref="multibubbles-hidden"
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/IMG_7.1.png`}
+                src={`${CMWN.MEDIA.SPRITE}IMG_7.1.png`}
             />,
             <skoash.Image
                 ref="pollutants-hidden"
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/sprite.pollutant.png`}
+                src={`${CMWN.MEDIA.SPRITE}sprite.pollutant.png`}
             />,
             <skoash.Image
                 ref="nonpollutants-hidden"
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/sprite.nonpollutant.png`}
+                src={`${CMWN.MEDIA.SPRITE}sprite.nonpollutant.png`}
             />,
             <div className="background garbage"></div>,
         ]}

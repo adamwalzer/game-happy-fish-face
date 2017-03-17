@@ -12,8 +12,8 @@ export default function (props, ref, key) {
             completeDelay={2000}
             completeOnStart
         >
-            <skoash.Image ref="background" className="fish animated" src="media/_images/_title/img_1.1.png" />
-            <skoash.Image ref="title" className="title animated" src="media/_images/_title/img_1.2.png" />
+            <skoash.Image ref="background" className="fish animated" src={`${CMWN.MEDIA.IMAGE}img_1.1.png`} />
+            <skoash.Image ref="title" className="title animated" src={`${CMWN.MEDIA.IMAGE}img_1.2.png`} />
             <Repeater ref="bubbles" className="bubbles" amount={14} />
         </skoash.Screen>
     );

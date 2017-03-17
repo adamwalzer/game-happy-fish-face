@@ -13,13 +13,13 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/ThankYou.mp3`}
+                    src={`${CMWN.MEDIA.VO}ThankYou.mp3`}
                     completeTarget="vo"
                     sprite={[0, 3500]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/ThankYou.mp3`}
+                    src={`${CMWN.MEDIA.VO}ThankYou.mp3`}
                     sprite={[3500, 2000]}
                 />
             </skoash.MediaSequence>
@@ -28,7 +28,7 @@ export default function (props, ref, key) {
                     <skoash.Component className="frame" pl-bg>
                         <skoash.Image
                             className="fish"
-                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.1.png`}
+                            src={`${CMWN.MEDIA.IMAGE}img_11.1.png`}
                         />
                         <skoash.Component>
                             <p>
@@ -42,7 +42,7 @@ export default function (props, ref, key) {
                             >
                                 <skoash.Image
                                     className="flip"
-                                    src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.2.png`}
+                                    src={`${CMWN.MEDIA.IMAGE}img_11.2.png`}
                                 />
                             </skoash.Component>
                         </skoash.Component>

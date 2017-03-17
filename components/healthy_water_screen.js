@@ -21,7 +21,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/HealthyWater.mp3`}
+                src={`${CMWN.MEDIA.VO}HealthyWater.mp3`}
             />
             <MediaCollection
                 play={_.get(props, 'data.media.play', null)}
@@ -29,13 +29,13 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="wrong"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Wrong.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="right"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Right.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Right.mp3`}
                 />
             </MediaCollection>
             <skoash.Component ref="center" className="center">
@@ -44,7 +44,7 @@ export default function (props, ref, key) {
                         <skoash.Image
                             ref="words"
                             className="words"
-                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_4.1.png`}
+                            src={`${CMWN.MEDIA.IMAGE}img_4.1.png`}
                         />
                         <Selectable
                             ref="selectable"
