@@ -60,20 +60,6 @@
                     top: -30px;
                     transition: opacity 1s;
                     width: 100px;
-
-                    &:nth-of-type(1) {
-                        opacity: 0;
-                    }
-                }
-
-                &.complete {
-                    img:nth-of-type(1) {
-                        opacity: 1;
-                    }
-
-                    img:nth-of-type(2) {
-                        opacity: 0;
-                    }
                 }
             }
         }

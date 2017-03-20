@@ -1,14 +1,28 @@
-import ClassNames from 'classnames';
-
 const INCREMENT = 10;
 const DECREMENT = 10;
 const CORRECT_BUBBLES = 10;
 
+const ANSWERS = [
+    'swim',
+    'washFace',
+    'drinkIt',
+    'brushTeeth',
+    'takeShowers',
+    'cleanHouse',
+    'cook',
+    'growCrops',
+    'laundry',
+    'washDishes',
+];
+
 export default function (props, ref, key) {
-    var onSelect = function (r, isCorrect) {
-        var correct = _.get(props, 'data.score.correct', 0);
-        var incorrect = _.get(props, 'data.score.incorrect', 0);
-        var cbRef = 'dummy';
+    let meterHeight = _.get(props, 'data.meter.height', 0);
+    console.log(meterHeight);
+
+    let onSelect = function (r, isCorrect) {
+        let correct = _.get(props, 'data.score.correct', 0);
+        let incorrect = _.get(props, 'data.score.incorrect', 0);
+        let cbRef = 'dummy';
 
         if (isCorrect) {
             correct++;
@@ -30,7 +44,7 @@ export default function (props, ref, key) {
         });
     };
 
-    var playAudio = function (r, cb) {
+    let playAudio = function (r, cb) {
         this.updateGameState({
             path: 'media',
             data: {
@@ -40,13 +54,12 @@ export default function (props, ref, key) {
         });
     };
 
-    var updateMeter = function (correct) {
-        var percent = (correct / CORRECT_BUBBLES) * 100;
+    let updateMeter = function (correct) {
+        let percent = correct / CORRECT_BUBBLES;
         this.updateGameState({
             path: 'meter',
             data: {
                 height: percent,
-                complete: percent >= 100
             }
         });
     };
@@ -138,16 +151,24 @@ export default function (props, ref, key) {
                     className="stroke"
                 />
                 <skoash.Component className="fill">
-                    <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}>
+                    <skoash.Component style={{'height': meterHeight * 100 + '%'}}>
                         <skoash.Image
                             src={`${CMWN.MEDIA.IMAGE}meter.fill.png`}
                         />
                     </skoash.Component>
-                    <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}
-                        className={ClassNames({'complete': _.get(props, 'data.meter.complete', false)})}
-                    >
-                        <skoash.Image src={`${CMWN.MEDIA.IMAGE}img_1.1.png`} />
-                        <skoash.Image src={`${CMWN.MEDIA.IMAGE}sickfish.png`} />
+                    <skoash.Component style={{'height': meterHeight * 100 + '%'}} >
+                        <skoash.Image
+                            src={`${CMWN.MEDIA.IMAGE}img_1.1.png`}
+                            style={{
+                                'opacity': (Math.round(meterHeight) * meterHeight),
+                            }}
+                        />
+                        <skoash.Image
+                            src={`${CMWN.MEDIA.IMAGE}sickfish.png`}
+                            style={{
+                                'opacity': ((Math.round(meterHeight) ^ 1) * (1 - meterHeight)),
+                            }}
+                        />
                     </skoash.Component>
                 </skoash.Component>
             </skoash.Component>
@@ -155,23 +176,24 @@ export default function (props, ref, key) {
                 ref="selectable"
                 onSelect={onSelect}
                 selectClass="HIGHLIGHTED"
+                answers={ANSWERS}
                 list={[
-                    <skoash.ListItem correct data-ref="swim" />,
-                    <skoash.ListItem correct data-ref="washFace" />,
-                    <skoash.ListItem correct data-ref="drinkIt" />,
+                    <skoash.ListItem data-ref="swim" />,
+                    <skoash.ListItem data-ref="washFace" />,
+                    <skoash.ListItem data-ref="drinkIt" />,
                     <skoash.ListItem select data-ref="playBasketball" />,
-                    <skoash.ListItem correct data-ref="brushTeeth" />,
+                    <skoash.ListItem data-ref="brushTeeth" />,
                     <skoash.ListItem select data-ref="tellTime" />,
-                    <skoash.ListItem correct data-ref="takeShowers" />,
-                    <skoash.ListItem correct data-ref="cleanHouse" />,
-                    <skoash.ListItem correct data-ref="cook" />,
+                    <skoash.ListItem data-ref="takeShowers" />,
+                    <skoash.ListItem data-ref="cleanHouse" />,
+                    <skoash.ListItem data-ref="cook" />,
                     <skoash.ListItem select data-ref="crochet" />,
-                    <skoash.ListItem correct data-ref="growCrops" />,
+                    <skoash.ListItem data-ref="growCrops" />,
                     <skoash.ListItem select data-ref="zipline" />,
                     <skoash.ListItem select data-ref="read" />,
-                    <skoash.ListItem correct data-ref="laundry" />,
+                    <skoash.ListItem data-ref="laundry" />,
                     <skoash.ListItem select data-ref="drive" />,
-                    <skoash.ListItem correct data-ref="washDishes" />,
+                    <skoash.ListItem data-ref="washDishes" />,
                     <skoash.ListItem select data-ref="sleep" />,
                     <skoash.ListItem select data-ref="tapDance" />,
                     <skoash.ListItem select data-ref="flyAKite" />,

@@ -3,20 +3,13 @@ import CustomCursorScreen from 'shared/components/custom_cursor_screen/0.1';
 const TRY_AGAIN = '0';
 const GOOD_JOB = '1';
 
-class TrashScreenComponent extends CustomCursorScreen {
-    start() {
-        var center;
-
-        super.start();
-
-        center = this.refs['children-1'].refs['children-0'];
+export default function (props, ref, key) {
+    var incompleteChildRefs = function () {
+        var center = this.refs['children-1'].refs['children-0'];
         ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
 
         this.incomplete();
-    }
-}
-
-export default function (props, ref, key) {
+    };
 
     var playAudio = function (play, playNext) {
         var callback = playNext ? playAudio.bind(this, playNext) : _.noop;
@@ -100,12 +93,13 @@ export default function (props, ref, key) {
     };
 
     return (
-        <TrashScreenComponent
+        <CustomCursorScreen
             {...props}
             ref={ref}
             key={key}
             id="trash"
             className={_.get(props, 'data.reveal.open', null) ? 'REVEAL-OPEN' : ''}
+            onStart={incompleteChildRefs}
         >
             <skoash.MediaCollection
                 ref="collection"
@@ -245,6 +239,6 @@ export default function (props, ref, key) {
                     />
                 </skoash.Component>
             </skoash.Component>
-        </TrashScreenComponent>
+        </CustomCursorScreen>
     );
 }
