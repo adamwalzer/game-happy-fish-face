@@ -6,7 +6,7 @@ const GOOD_JOB = '1';
 export default function (props, ref, key) {
     var incompleteChildRefs = function () {
         var center = this.refs['children-1'].refs['children-0'];
-        ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
+        ['selectable', 'timer', 'children-0'].forEach(r => { center.refs[r].incompleteRefs(); });
 
         this.incomplete();
     };

@@ -17,7 +17,6 @@ const ANSWERS = [
 
 export default function (props, ref, key) {
     let meterHeight = _.get(props, 'data.meter.height', 0);
-    console.log(meterHeight);
 
     let onSelect = function (r, isCorrect) {
         let correct = _.get(props, 'data.score.correct', 0);
