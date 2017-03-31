@@ -15,6 +15,29 @@ const ANSWERS = [
     'washDishes',
 ];
 
+const CHOICES = [
+    'swim',
+    'washFace',
+    'drinkIt',
+    'playBasketball',
+    'brushTeeth',
+    'tellTime',
+    'takeShowers',
+    'cleanHouse',
+    'cook',
+    'crochet',
+    'growCrops',
+    'zipline',
+    'read',
+    'laundry',
+    'drive',
+    'washDishes',
+    'sleep',
+    'tapDance',
+    'flyAKite',
+    'talk',
+];
+
 export default function (props, ref, key) {
     let meterHeight = _.get(props, 'data.meter.height', 0);
 
@@ -176,28 +199,7 @@ export default function (props, ref, key) {
                 onSelect={onSelect}
                 selectClass="HIGHLIGHTED"
                 answers={ANSWERS}
-                list={[
-                    <skoash.ListItem data-ref="swim" />,
-                    <skoash.ListItem data-ref="washFace" />,
-                    <skoash.ListItem data-ref="drinkIt" />,
-                    <skoash.ListItem data-ref="playBasketball" />,
-                    <skoash.ListItem data-ref="brushTeeth" />,
-                    <skoash.ListItem data-ref="tellTime" />,
-                    <skoash.ListItem data-ref="takeShowers" />,
-                    <skoash.ListItem data-ref="cleanHouse" />,
-                    <skoash.ListItem data-ref="cook" />,
-                    <skoash.ListItem data-ref="crochet" />,
-                    <skoash.ListItem data-ref="growCrops" />,
-                    <skoash.ListItem data-ref="zipline" />,
-                    <skoash.ListItem data-ref="read" />,
-                    <skoash.ListItem data-ref="laundry" />,
-                    <skoash.ListItem data-ref="drive" />,
-                    <skoash.ListItem data-ref="washDishes" />,
-                    <skoash.ListItem data-ref="sleep" />,
-                    <skoash.ListItem data-ref="tapDance" />,
-                    <skoash.ListItem data-ref="flyAKite" />,
-                    <skoash.ListItem data-ref="talk" />,
-                ]}
+                list={_.map(CHOICES, v => <skoash.ListItem data-ref={v} />);}
             />
             <skoash.Score
                 ref="score"
